@@ -11,7 +11,7 @@ function Students() {
             const token = localStorage.getItem("token");
 
             const response = await fetch(
-                "http://localhost:5000/api/students",
+                "https://hostelhub-backend-82k9.onrender.com/api/students",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`

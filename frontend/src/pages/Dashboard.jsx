@@ -21,7 +21,7 @@ function Dashboard() {
 
                 // Fetch student
                 const studentResponse = await fetch(
-                    "http://localhost:5000/api/students/me",
+                    "https://hostelhub-backend-82k9.onrender.com/api/students/me",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -37,7 +37,7 @@ function Dashboard() {
 
                     // Fetch room
                     const roomResponse = await fetch(
-                        `http://localhost:5000/api/rooms/${studentData.roomNumber}`
+                        `https://hostelhub-backend-82k9.onrender.com/api/rooms/${studentData.roomNumber}`
                     );
 
                     const roomData = await roomResponse.json();
@@ -49,7 +49,7 @@ function Dashboard() {
 
                 // Fetch complaints
                 const complaintResponse = await fetch(
-                    "http://localhost:5000/api/complaints/my",
+                    "https://hostelhub-backend-82k9.onrender.com/api/complaints/my",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -77,12 +77,17 @@ function Dashboard() {
     // Update profile
     const handleProfileUpdate = async () => {
 
+        console.log("UPDATE FUNCTION CALLED");
+
         try {
 
             const token = localStorage.getItem("token");
 
+            console.log("Token exists:", !!token);
+            console.log("Updating phone:", editPhone);
+
             const response = await fetch(
-                "http://localhost:5000/api/students/me",
+                "https://hostelhub-backend-82k9.onrender.com/api/students/me",
                 {
                     method: "PUT",
                     headers: {
@@ -95,7 +100,11 @@ function Dashboard() {
                 }
             );
 
+            console.log("Update response status:", response.status);
+
             const data = await response.json();
+
+            console.log("Update response:", data);
 
             if (response.ok) {
 
@@ -133,7 +142,7 @@ function Dashboard() {
             const token = localStorage.getItem("token");
 
             const response = await fetch(
-                "http://localhost:5000/api/complaints",
+                "https://hostelhub-backend-82k9.onrender.com/api/complaints",
                 {
                     method: "POST",
                     headers: {

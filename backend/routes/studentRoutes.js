@@ -119,6 +119,63 @@ router.get(
 
 
 // ========================================
+// STUDENT - UPDATE OWN PROFILE
+// IMPORTANT: This must come BEFORE /:id
+// ========================================
+
+router.put(
+    "/me",
+    authMiddleware,
+    roleMiddleware(["Student"]),
+    async (req, res) => {
+
+        try {
+
+            const user = await User.findById(
+                req.user.userId
+            );
+
+            if (!user) {
+                return res.status(404).json({
+                    message: "User not found"
+                });
+            }
+
+            const student = await Student.findOne({
+                email: user.email
+            });
+
+            if (!student) {
+                return res.status(404).json({
+                    message: "Student profile not found"
+                });
+            }
+
+            const { phone } = req.body;
+
+            student.phone = phone;
+
+            await student.save();
+
+            res.json({
+                message: "Profile updated successfully",
+                student: student
+            });
+
+        } catch (error) {
+
+            res.status(400).json({
+                message: "Failed to update profile",
+                error: error.message
+            });
+
+        }
+
+    }
+);
+
+
+// ========================================
 // ADMIN - UPDATE STUDENT
 // ========================================
 
@@ -248,62 +305,6 @@ router.put(
 
             res.status(400).json({
                 message: "Failed to update student",
-                error: error.message
-            });
-
-        }
-
-    }
-);
-
-
-// ========================================
-// STUDENT - UPDATE OWN PROFILE
-// ========================================
-
-router.put(
-    "/me",
-    authMiddleware,
-    roleMiddleware(["Student"]),
-    async (req, res) => {
-
-        try {
-
-            const user = await User.findById(
-                req.user.userId
-            );
-
-            if (!user) {
-                return res.status(404).json({
-                    message: "User not found"
-                });
-            }
-
-            const student = await Student.findOne({
-                email: user.email
-            });
-
-            if (!student) {
-                return res.status(404).json({
-                    message: "Student profile not found"
-                });
-            }
-
-            const { phone } = req.body;
-
-            student.phone = phone;
-
-            await student.save();
-
-            res.json({
-                message: "Profile updated successfully",
-                student: student
-            });
-
-        } catch (error) {
-
-            res.status(400).json({
-                message: "Failed to update profile",
                 error: error.message
             });
 

@@ -30,7 +30,7 @@ function AdminDashboard() {
 
             // Fetch Stats
             const statsResponse = await fetch(
-                "http://localhost:5000/api/admin/stats",
+                "https://hostelhub-backend-82k9.onrender.com/api/admin/stats",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -47,7 +47,7 @@ function AdminDashboard() {
 
             // Fetch Complaints
             const complaintResponse = await fetch(
-                "http://localhost:5000/api/complaints/admin",
+                "https://hostelhub-backend-82k9.onrender.com/api/complaints/admin",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -65,7 +65,7 @@ function AdminDashboard() {
 
             // Fetch Rooms
             const roomResponse = await fetch(
-                "http://localhost:5000/api/rooms"
+                "https://hostelhub-backend-82k9.onrender.com/api/rooms"
             );
 
             const roomData =
@@ -78,7 +78,7 @@ function AdminDashboard() {
 
             // Fetch Students
             const studentResponse = await fetch(
-                "http://localhost:5000/api/students",
+                "https://hostelhub-backend-82k9.onrender.com/api/students",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -130,7 +130,7 @@ function AdminDashboard() {
                 localStorage.getItem("token");
 
             const response = await fetch(
-                "http://localhost:5000/api/rooms",
+                "https://hostelhub-backend-82k9.onrender.com/api/rooms",
                 {
                     method: "POST",
 
@@ -196,7 +196,7 @@ function AdminDashboard() {
                 localStorage.getItem("token");
 
             const response = await fetch(
-                `http://localhost:5000/api/rooms/${room._id}`,
+                `https://hostelhub-backend-82k9.onrender.com/api/rooms/${room._id}`,
                 {
                     method: "PUT",
 
@@ -276,7 +276,7 @@ function AdminDashboard() {
                 localStorage.getItem("token");
 
             const response = await fetch(
-                `http://localhost:5000/api/rooms/${room._id}`,
+                `https://hostelhub-backend-82k9.onrender.com/api/rooms/${room._id}`,
                 {
                     method: "DELETE",
 
@@ -338,7 +338,7 @@ function AdminDashboard() {
                 localStorage.getItem("token");
 
             const response = await fetch(
-                `http://localhost:5000/api/students/${studentId}`,
+                `https://hostelhub-backend-82k9.onrender.com/api/students/${studentId}`,
                 {
                     method: "PUT",
 
@@ -421,7 +421,7 @@ function AdminDashboard() {
                 localStorage.getItem("token");
 
             const response = await fetch(
-                `http://localhost:5000/api/students/${studentId}`,
+                `https://hostelhub-backend-82k9.onrender.com/api/students/${studentId}`,
                 {
                     method: "DELETE",
 
@@ -484,7 +484,7 @@ function AdminDashboard() {
                     localStorage.getItem("token");
 
                 const response = await fetch(
-                    `http://localhost:5000/api/complaints/${id}`,
+                    `https://hostelhub-backend-82k9.onrender.com/api/complaints/${id}`,
                     {
                         method: "PUT",
 
@@ -755,7 +755,8 @@ function AdminDashboard() {
 
                 {/* ======================================================
                     ADD ROOM
-                ====================================================== */}
+                */}
+
 
                 <section className="dashboard-section">
 
@@ -813,7 +814,7 @@ function AdminDashboard() {
 
                 {/* ======================================================
                     ROOMS
-                ====================================================== */}
+                */}
 
                 <section className="dashboard-section">
 
@@ -1021,7 +1022,7 @@ function AdminDashboard() {
 
                 {/* ======================================================
                     STUDENTS
-                ====================================================== */}
+                */}
 
                 <section className="dashboard-section">
 
@@ -1232,7 +1233,7 @@ function AdminDashboard() {
 
                 {/* ======================================================
                     COMPLAINTS
-                ====================================================== */}
+                */}
 
                 <section className="dashboard-section">
 
