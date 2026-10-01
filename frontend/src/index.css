@@ -1,0 +1,620 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =========================
+   ADMIN PAGE
+========================= */
+
+.admin-page {
+    min-height: 100vh;
+    background: #0f172a;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.admin-header {
+    min-height: 82px;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111827;
+    border-bottom: 1px solid #1e293b;
+}
+
+.brand h1 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 27px;
+}
+
+.brand p {
+    margin: 5px 0 0;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.logout-btn {
+    border: none;
+    background: #ef4444;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.admin-content {
+    width: 88%;
+    max-width: 1250px;
+    margin: auto;
+    padding: 35px 0 60px;
+}
+
+.dashboard-section {
+    margin-bottom: 45px;
+}
+
+.section-heading {
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    margin: 0 0 6px;
+    color: #f8fafc;
+    font-size: 23px;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.stat-card {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    border-color: #475569;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.stat-card p {
+    margin: 0 0 5px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.stat-card h3 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 28px;
+}
+
+/* =========================
+   ADD ROOM
+========================= */
+
+.add-room-form {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 22px;
+    display: flex;
+    gap: 12px;
+}
+
+.add-room-form input {
+    flex: 1;
+    background: #0f172a;
+    color: #f8fafc;
+    border: 1px solid #334155;
+    padding: 12px 14px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.add-room-form input:focus,
+.edit-box input:focus {
+    border-color: #6366f1;
+}
+
+.primary-btn {
+    border: none;
+    background: #6366f1;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.primary-btn:hover {
+    background: #4f46e5;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.room-card,
+.student-card,
+.complaint-card {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 22px;
+    transition: 0.2s;
+}
+
+.room-card:hover,
+.student-card:hover,
+.complaint-card:hover {
+    border-color: #475569;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   CARD HEADER
+========================= */
+
+.card-header,
+.complaint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.small-label {
+    color: #64748b;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.card-header h3,
+.complaint-header h3 {
+    margin: 6px 0 0;
+    color: #f8fafc;
+    font-size: 21px;
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.badge {
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.badge.available,
+.badge.resolved {
+    background: #064e3b;
+    color: #6ee7b7;
+}
+
+.badge.full,
+.badge.pending {
+    background: #450a0a;
+    color: #fca5a5;
+}
+
+.badge.progress {
+    background: #451a03;
+    color: #fdba74;
+}
+
+/* =========================
+   ROOM DETAILS
+========================= */
+
+.room-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 24px 0;
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+}
+
+.room-details div {
+    padding: 15px 8px;
+    text-align: center;
+}
+
+.room-details div:not(:last-child) {
+    border-right: 1px solid #1e293b;
+}
+
+.room-details span,
+.student-details span,
+.complaint-details span {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.room-details strong {
+    color: #e2e8f0;
+    font-size: 20px;
+}
+
+/* =========================
+   STUDENT
+========================= */
+
+.student-header {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.student-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #4f46e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.student-header h3 {
+    margin: 0 0 4px;
+    color: #f8fafc;
+}
+
+.student-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.student-details,
+.complaint-details {
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+    padding: 12px 0;
+    margin-bottom: 18px;
+}
+
+.student-details div,
+.complaint-details div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 11px 0;
+}
+
+.student-details strong,
+.complaint-details strong {
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-row {
+    display: flex;
+    gap: 9px;
+    margin-top: 16px;
+}
+
+.button-row button {
+    flex: 1;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.edit-btn {
+    background: #1e293b;
+    color: #c7d2fe;
+    border: 1px solid #3730a3 !important;
+}
+
+.edit-btn:hover {
+    background: #312e81;
+}
+
+.delete-btn {
+    background: #450a0a;
+    color: #fca5a5;
+}
+
+.delete-btn:hover {
+    background: #7f1d1d;
+}
+
+.save-btn {
+    background: #059669;
+    color: white;
+}
+
+.save-btn:hover {
+    background: #047857;
+}
+
+.cancel-btn {
+    background: #334155;
+    color: #e2e8f0;
+}
+
+.progress-btn {
+    background: #451a03;
+    color: #fdba74;
+}
+
+.resolve-btn {
+    background: #064e3b;
+    color: #6ee7b7;
+}
+
+/* =========================
+   EDIT BOX
+========================= */
+
+.edit-box {
+    margin-top: 15px;
+}
+
+.edit-box input {
+    width: 100%;
+    margin-bottom: 10px;
+    background: #0f172a;
+    color: #f8fafc;
+    border: 1px solid #334155;
+    padding: 11px 13px;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state {
+    background: #111827;
+    border: 1px dashed #334155;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    color: #64748b;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .admin-header {
+        padding: 16px 5%;
+    }
+
+    .brand h1 {
+        font-size: 22px;
+    }
+
+    .admin-content {
+        width: 92%;
+        padding-top: 25px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .add-room-form {
+        flex-direction: column;
+    }
+
+    .room-details {
+        grid-template-columns: 1fr;
+    }
+
+    .room-details div:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid #1e293b;
+    }
+
+    .button-row {
+        flex-direction: column;
+    }
+
+}
