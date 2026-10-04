@@ -5,9 +5,13 @@ function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleLogin = async (e) => {
+
         e.preventDefault();
+
+        setLoading(true);
 
         try {
 
@@ -37,13 +41,17 @@ function Login() {
             } else {
 
                 alert(data.message);
+                setLoading(false);
 
             }
 
         } catch (error) {
 
             console.log("Login error:", error);
+
             alert("Unable to connect to server");
+
+            setLoading(false);
 
         }
     };
@@ -96,6 +104,7 @@ function Login() {
                                     setEmail(e.target.value)
                                 }
                                 required
+                                disabled={loading}
                             />
 
                         </div>
@@ -112,6 +121,7 @@ function Login() {
                                     setPassword(e.target.value)
                                 }
                                 required
+                                disabled={loading}
                             />
 
                         </div>
@@ -119,9 +129,21 @@ function Login() {
                         <button
                             className="login-btn"
                             type="submit"
+                            disabled={loading}
                         >
-                            Login
-                            <span>→</span>
+
+                            {loading ? (
+                                <>
+                                    <span className="login-spinner"></span>
+                                    Logging in...
+                                </>
+                            ) : (
+                                <>
+                                    Login
+                                    <span>→</span>
+                                </>
+                            )}
+
                         </button>
 
                     </form>
@@ -133,6 +155,7 @@ function Login() {
                     <button
                         className="register-btn"
                         type="button"
+                        disabled={loading}
                         onClick={() => {
                             window.location.href = "/register";
                         }}
